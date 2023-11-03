@@ -46,3 +46,10 @@ I think it is because I tried to recover a WSC which is associated with a differ
 3. Create a subscription
 4. Disconnect 
 5. Reconnect with the wsc token AND and a refreshed OAuth token (still the same session)
+
+"recoveryState": "Successful"
+
+
+## Expeiement 5
+
+Reconnect without specifying the wsc token
