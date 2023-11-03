@@ -11,7 +11,7 @@
 "recoveryState": "Failed",
 "recoveryErrorCode": "WSG-1005",
 
-原因是找不到这个 ws session 关联的 subscription id。
+Reason: server cannot find subscription id assocaited with ws session
 
 
 ## Experiment 2
@@ -22,3 +22,4 @@
 4. Disconnect 
 5. Reconnect with the wsc token
 
+"recoveryState": "Successful"

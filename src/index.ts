@@ -1,10 +1,9 @@
 import RingCentral from '@rc-ex/core';
 import waitFor from 'wait-for-async';
 import WS from 'ws';
-// import hyperid from 'hyperid';
-// import waitFor from 'wait-for-async';
+import hyperid from 'hyperid';
 
-// const uuid = hyperid();
+const uuid = hyperid();
 
 const rc = new RingCentral({
   server: process.env.RINGCENTRAL_SERVER_URL,
@@ -27,6 +26,26 @@ const main = async () => {
       wscToken = JSON.parse(message)[0].wsc.token;
     }
   });
+
+  const request = [
+    {
+      type: 'ClientRequest',
+      messageId: uuid(),
+      method: 'POST',
+      path: '/restapi/v1.0/subscription',
+    },
+    {
+      eventFilters: ['/restapi/v1.0/account/~/extension/~/message-store'],
+      deliveryMode: {
+        transportType: 'WebSocket',
+      },
+    },
+  ];
+
+  ws.addEventListener('open', () => {
+    ws.send(JSON.stringify(request));
+  });
+
   await waitFor({ interval: 1000, condition: () => wscToken !== '' });
   ws.close();
   await waitFor({ interval: 5000 });
