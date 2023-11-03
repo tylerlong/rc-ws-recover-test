@@ -60,3 +60,11 @@ There is no "recoveryState" field.
 ## Experiment 6
 
 Reconnect with a fake wsc token
+
+{
+  "errorCode": "WSG-400",
+  "message": "Malformed WebSocket session context token"
+}
+
+Not only you get this error, but also the connection is closed.
+
