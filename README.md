@@ -53,3 +53,10 @@ I think it is because I tried to recover a WSC which is associated with a differ
 ## Expeiement 5
 
 Reconnect without specifying the wsc token
+
+There is no "recoveryState" field.
+
+
+## Experiment 6
+
+Reconnect with a fake wsc token

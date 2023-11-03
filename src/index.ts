@@ -49,10 +49,9 @@ const main = async () => {
   await waitFor({ interval: 1000, condition: () => wscToken !== '' });
   ws.close();
   await waitFor({ interval: 5000 });
-  await rc.refresh();
   const r2 = await rc.post('/restapi/oauth/wstoken');
   const wsToken2 = r2.data as { uri: string; ws_access_token: string };
-  const wsUri2 = `${wsToken2.uri}?access_token=${wsToken2.ws_access_token}&wsc=${wscToken}`;
+  const wsUri2 = `${wsToken2.uri}?access_token=${wsToken2.ws_access_token}`;
   const ws2 = new WS(wsUri2);
   ws2.addEventListener('message', (e) => {
     console.log(JSON.stringify(JSON.parse(e.data as string), null, 2));
